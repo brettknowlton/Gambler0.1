@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++ -o ${workspaceFolder}/build/Gambler ${workspaceFolder}/main.cpp -I${workspaceFolder}/Dependencies/GLEW/include -I${workspaceFolder}/Dependencies/GLFW/include -I${workspaceFolder}/Dependencies/GLUT/include -L${workspaceFolder}/Dependencies/GLEW/lib/Release/Win32 -L${workspaceFolder}/Dependencies/GLFW/lib -L${workspaceFolder}/Dependencies/GLUT/lib -lglew32s -lglfw3 -lglut32 -lopengl32 -DGLEW_STATIC",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "reveal": "always"
+            }
+        }
+    ]
+}
