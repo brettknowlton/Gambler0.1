@@ -140,11 +140,11 @@ int main(void)
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);//This explains the layout of the data in the buffer
     glEnableVertexAttribArray(0);
 
-    std::string workingDir = filesystem::current_path().string();
+    //std::string workingDir = filesystem::current_path().string();
 
-    std::cout << workingDir << std::endl;
-    ShaderProgramSource source = ParseShader(workingDir + "..\\res\\shaders\\basic.shader");
-
+    //std::cout << workingDir << std::endl;
+    //ShaderProgramSource source = ParseShader(workingDir + "..\\res\\shaders\\basic.shader");
+    ShaderProgramSource source = ParseShader("C:\\dev\\Gambler0.1\\res\\shaders\\basic.shader");
     std::cout << "VERTEX" << std::endl;
     std::cout << source.VertexSource << std::endl;
     std::cout << "FRAGMENT" << std::endl;
