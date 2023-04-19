@@ -18,14 +18,20 @@ struct ShaderProgramSource{
 
 static ShaderProgramSource ParseShader(const std::string &filepath){
     
+    //create a file stream
     std::ifstream stream(filepath);
     std::cout << filepath << std::endl;
+
+    //create an enum to track what type of shader we are parsing
     enum class ShaderType{
         NONE = -1, VERTEX = 0, FRAGMENT = 1
     };
 
+    //create a string(line) and an array(ss) that we will use to parse through and add lines to one or the other shader
     std::string line;
     std::stringstream ss[2];
+
+    //start with no shader type
     ShaderType type = ShaderType::NONE;
 
     while(getline(stream, line)){
@@ -46,6 +52,14 @@ static ShaderProgramSource ParseShader(const std::string &filepath){
             ss[(int)type] << line << std::endl;
     }
     }
+    /*
+    * Print shader code:
+    * std::cout << "VERTEX" << std::endl;
+    * std::cout << ss[0].str() << std::endl;
+    * std::cout << "FRAGMENT" << std::endl;
+    * std::cout << ss[1].str() << std::endl;
+    */
+
     return { 
         ss[0].str(),
         ss[1].str()
@@ -78,13 +92,13 @@ static unsigned int compileShader(unsigned int type,const std::string& source){
 
     return id;
 }
+
 static unsigned int createShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
     unsigned int program = glCreateProgram();
     unsigned int vs = compileShader(GL_VERTEX_SHADER, vertexShader);
     unsigned int fs = compileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
-    
 
     glAttachShader(program, vs);
     glAttachShader(program, fs);
@@ -140,16 +154,8 @@ int main(void)
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);//This explains the layout of the data in the buffer
     glEnableVertexAttribArray(0);
 
-    //std::string workingDir = filesystem::current_path().string();
-
-    //std::cout << workingDir << std::endl;
-    //ShaderProgramSource source = ParseShader(workingDir + "..\\res\\shaders\\basic.shader");
-    ShaderProgramSource source = ParseShader("C:\\dev\\Gambler0.1\\res\\shaders\\basic.shader");
-    std::cout << "VERTEX" << std::endl;
-    std::cout << source.VertexSource << std::endl;
-    std::cout << "FRAGMENT" << std::endl;
-    std::cout << source.FragmentSource << std::endl;
-
+    ShaderProgramSource source = ParseShader("../../res/shaders/basic.shader");
+    
     unsigned int shader = createShader(source.VertexSource, source.FragmentSource);
     glUseProgram(shader);
     
