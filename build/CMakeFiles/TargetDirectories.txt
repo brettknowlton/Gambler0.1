@@ -1,4 +1,4 @@
-D:/Gambler/Gambler0.1/build/CMakeFiles/Gambler0.1.dir
-D:/Gambler/Gambler0.1/build/CMakeFiles/PACKAGE.dir
-D:/Gambler/Gambler0.1/build/CMakeFiles/ALL_BUILD.dir
-D:/Gambler/Gambler0.1/build/CMakeFiles/ZERO_CHECK.dir
+C:/dev/Gambler0.1/build/CMakeFiles/Gambler0.1.dir
+C:/dev/Gambler0.1/build/CMakeFiles/PACKAGE.dir
+C:/dev/Gambler0.1/build/CMakeFiles/ALL_BUILD.dir
+C:/dev/Gambler0.1/build/CMakeFiles/ZERO_CHECK.dir
