@@ -4,12 +4,17 @@
 #include <GL/glut.h>
 #include <GLFW/glfw3.h>
 
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
-#include "GLErrorCheck.cpp"//this just includes some error checking macros
+#include "Renderer.cpp"
+
+#include "VertexBuffer.cpp"
+#include "IndexBuffer.cpp"
+#include "VertexArray.cpp"
 
 struct ShaderProgramSource{
     std::string VertexSource;
@@ -79,7 +84,7 @@ static unsigned int compileShader(unsigned int type,const std::string& source){
         glGetShaderInfoLog(id, length, &length, message);
 
         std::cout << "Failed to compile "<< 
-        (type==GL_VERTEX_SHADER ? "vertex" : "fragment") << 
+        (type==GL_VERTEX_SHADER ? "vertex" : (type == GL_FRAGMENT_SHADER ? "fragment" : "no")) << 
         " shader!" << std::endl;
 
         std::cout << message << std::endl;
@@ -116,6 +121,11 @@ int main(void)
     if (!glfwInit())
         return -1;
 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
@@ -127,6 +137,7 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    /*Set framerate to sync with monitor's refresh rate*/
     glfwSwapInterval(1);
 
     if(glewInit() != GLEW_OK){
@@ -138,89 +149,91 @@ int main(void)
     std::cout << glGetString(GL_VERSION) << std::endl;
 
 
-
-    float positions[] = {
-        -0.5f, -0.5f,
-         0.5f, -0.5f,
-         0.5f,  0.5f,
-        -0.5f,  0.5f,
-    };
-
-    unsigned int indecies[]{
-        0,1,2,
-        2,3,0,
-    };
-
-    //create a buffer
-
-    unsigned int buffer;
-    GLCall(glGenBuffers(1, &buffer));
-    GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
-    GLCall(glBufferData(GL_ARRAY_BUFFER, 12*sizeof(float), positions, GL_STATIC_DRAW));
-    
-    GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));//This explains the layout of the data in the buffer
-    GLCall(glEnableVertexAttribArray(0));
-
-    
-    unsigned int ibo;
-    GLCall(glGenBuffers(1, &ibo));
-    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
-    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indecies, GL_STATIC_DRAW));
-
-
-
-    ShaderProgramSource source = ParseShader("../../res/shaders/basic.shader");
-    
-    unsigned int shader = createShader(source.VertexSource, source.FragmentSource);
-    GLCall(glUseProgram(shader));
-    
-    GLCall(int location = glGetUniformLocation(shader, "u_Color"));
-    ASSERT(location != -1);
-
-
-    float colors[] = {0, 0, 0};
-    unsigned int channel = 0;
-    float increments[] = {0.05f, 0.05f, 0.05f};
-
-
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
     {
+        float positions[] = {
+            -0.5f, -0.5f,
+            0.5f, -0.5f,
+            0.5f,  0.5f,
+            -0.5f,  0.5f,
+        };
 
-        //get input
-        /* Poll for and process events */
-        glfwPollEvents();
+        unsigned int indecies[]{
+            0,1,2,
+            2,3,0,
+        };
 
+        //vertex array object
+        unsigned int vao;
 
+        VertexArray va;
+        VertexBuffer vb(positions, 4 * 2 * sizeof(float));
 
-        //tick or update
+        VertexBufferLayout layout;
+        layout.Push<float>(2);
+        va.AddBuffer(vb, layout);
 
+        IndexBuffer ib(indecies, 6);
 
-        /* Render here */
-        GLCall(glClear(GL_COLOR_BUFFER_BIT));
-
+        ShaderProgramSource source = ParseShader("../../res/shaders/basic.shader");
         
-        GLCall(glUniform4f(location, colors[0], colors[1], colors[2], 1.0f));
+        unsigned int shader = createShader(source.VertexSource, source.FragmentSource);
+        GLCall(glUseProgram(shader));
         
-        //this is the draw call. More needs to happen to actualy show what is being drawn. It will draw the currently bound buffer
-        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+        GLCall(int location = glGetUniformLocation(shader, "u_Color"));
+        ASSERT(location != -1);
 
-        if(colors[channel] > 1.0f){
-            increments[channel] = -0.05f;
+        GLCall(glUseProgram(0));
+        GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+        GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+
+        float colors[] = {0, 1.0f, 0};
+        unsigned int channel = 0;
+        unsigned int channel2 = 1;
+        float increment = 0.005f;
+
+
+        /* Loop until the user closes the window */
+        while (!glfwWindowShouldClose(window))
+        {
+
+            //get input
+            /* Poll for and process events */
+            glfwPollEvents();
+
+
+
+            //tick or update
+
+
+            /* Render here */
+            GLCall(glClear(GL_COLOR_BUFFER_BIT));
+
+            GLCall(glUseProgram(shader));
+            GLCall(glUniform4f(location, colors[0], colors[1], colors[2], 1.0f));
+
+            //vb.Bind();//This binds the VERTEX buffer to the currently bound vertex array object in openGL
+           
+            va.Bind();//This binds the VERTEX ARRAY object to the currently bound vertex array object in openGL
+
+            ib.Bind();//This binds the INDEX buffer to the currently bound vertex array object in openGL
+            
+            //this is the draw call. More needs to happen to actualy show what is being drawn. It will draw the currently bound buffer
+            GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+
+            if(colors[channel] >= 1.0f){
+                channel2 = channel;
+                channel = (channel + 1) % 3;
+            }
+            colors[channel] += increment;
+            colors[channel2] -= increment;
+
+            /* Swap front and back buffers */
+            glfwSwapBuffers(window);
+
         }
-        else if(colors[channel] < 0.0f){
-            increments[channel] = 0.05f;
-            channel= (channel+1)%3;
-        }
 
-        colors[channel] += increments[channel];
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
+        glDeleteProgram(shader);
     }
-
-    glDeleteProgram(shader);
     glfwTerminate();
     return 0;
 }
