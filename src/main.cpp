@@ -10,12 +10,14 @@
 #include <sstream>
 #include <string>
 
-#include "Renderer.cpp"
+//#include "GLMacros.h"
 
 #include "VertexBuffer.cpp"
 #include "IndexBuffer.cpp"
 #include "VertexArray.cpp"
 #include "Shader.cpp"
+#include "Renderer.cpp"
+
 
 
 int main(void)
@@ -32,7 +34,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(1920, 1080, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -104,6 +106,8 @@ int main(void)
         ib.Unbind();//unbind the index buffer object
         shader.Unbind();//unbind the shader program
 
+        Renderer renderer;
+
         float colors[] = {0, 1.0f, 0};
         unsigned int channel = 0;
         unsigned int channel2 = 1;
@@ -133,19 +137,13 @@ int main(void)
 
 
             /* Render here */
-            GLCall(glClear(GL_COLOR_BUFFER_BIT));
-
-            vb.Bind();//This binds the VERTEX buffer to the currently bound vertex array object in openGL
-           
-            va.Bind();
-
-            ib.Bind();
-
+            renderer.Clear();
             shader.Bind();
             shader.SetUniform4f("u_Color", colors[0], colors[1], colors[2], 1.0f);
             
-            //this is the draw call. More needs to happen to actualy show what is being drawn. It will draw the currently bound buffer
-            GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+            //this is the draw call. 
+            //the vertex array object is bound, the index buffer object is bound, and the shader program is bound
+            renderer.Draw(va, ib, shader);
 
 
             /* Swap front and back buffers */

@@ -1,5 +1,5 @@
 #include "Shader.h"
-#include "Renderer.h"
+#include "GLMacros.h"
 
 #include <fstream>
 #include <sstream>

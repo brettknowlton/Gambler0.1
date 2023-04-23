@@ -1,4 +1,5 @@
 #include "VertexArray.h"
+#include "GLMacros.h"
 
 
 VertexArray::VertexArray()
