@@ -10,15 +10,17 @@
 #include <sstream>
 #include <string>
 
-//#include "GLMacros.h"
+#include "GLMacros.h"
 
 #include "VertexBuffer.cpp"
 #include "IndexBuffer.cpp"
 #include "VertexArray.cpp"
 #include "Shader.cpp"
 #include "Renderer.cpp"
+#include "Texture.cpp"
 
-
+#include "vendor/glm/glm.hpp"
+#include "vendor/glm/gtc/matrix_transform.hpp"
 
 int main(void)
 {
@@ -34,7 +36,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1920, 1080, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -58,16 +60,19 @@ int main(void)
 
     {//TODO: figure out how to get rid of this scoping issue...
         float positions[] = {
-            -0.5f, -0.5f,
-            0.5f, -0.5f,
-            0.5f,  0.5f,
-            -0.5f,  0.5f,
+            -0.5f, -0.5f, 0.0f, 0.0f,
+            0.5f, -0.5f, 1.0f, 0.0f,
+            0.5f,  0.5f, 1.0f, 1.0f,
+            -0.5f,  0.5f, 0.0f, 1.0f,
         };
 
         unsigned int indecies[]{
             0,1,2,
             2,3,0,
         };
+
+        GLCall(glEnable(GL_BLEND));
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
         //extra spacing added for readability, this is important to understand.
         
@@ -81,26 +86,32 @@ int main(void)
         VertexArray va; //create a vertex-array object, this will partially be the VBO, but it will also tell the GPU what type the data is and where it is
 
 
-        VertexBuffer vb(positions, 4 * 2 * sizeof(float));//create a vertex-buffer object aka VBO, veretx-buffer takes in a pointer to the data and the size of the data you want to store in it
+        VertexBuffer vb(positions, 4 * 4 * sizeof(float));//create a vertex-buffer object aka VBO, veretx-buffer takes in a pointer to the data and the size of the data you want to store in it
 
 
         VertexBufferLayout layout;//also create a vertex-buffer-layout object to tell the vertex buffer what the data is
 
 
-        layout.Push<float>(2);//tell the layout that the data is a float and that there are 2 of them
-
+        layout.Push<float>(2);//tell the layout to add 2 floats. this is for positions
+        layout.Push<float>(2);//tell the layout to add 2 floats. this is for uv coordinates
 
         va.AddBuffer(vb, layout);//add the vertex-buffer and the vertex-buffer-layout to the vertex-array object
 
 
         IndexBuffer ib(indecies, 6);//create an index-buffer object aka IBO, this will represent the order that the data in the vertex-buffer object should be drawn in
 
+        glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);//create a projection matrix with 4:3 aspect ratio
 
         Shader shader = Shader("../../res/shaders/basic.shader");//create a shader object, this will represent the shader program that will be used to draw the data in the vertex-buffer object
         shader.Bind();
+        shader.SetUniformMat4f("u_MVP", proj);
         
-        shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);//set the uniform variable u_Color
+        //shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);//set the uniform variable u_Color
 
+        Texture texture("../../res/textures/test.png");
+        texture.Bind();
+        shader.SetUniform1i("u_Texture", 0);
+    
         va.Unbind();//unbind the vertex array object
         vb.Unbind();//unbind the vertex buffer object
         ib.Unbind();//unbind the index buffer object
