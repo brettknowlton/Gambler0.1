@@ -1,7 +1,3 @@
-//This is the index buffer class, which is used to store the indices of
-//the vertices in the vertex buffer. The indices are used to draw the
-//vertices in the correct order.
-
 #include "IndexBuffer.h"
 #include "Renderer.h"
 
