@@ -24,6 +24,7 @@ set(LIBS ${LIBS} ${GLEW_DIR}/lib/Release/Win32/glew32s.lib)
 
 # Add your project source files
 add_executable(Gambler0.1 src/main.cpp)
+add_executable(IMGUIEXAMPLE src/vendor/imgui/main.cpp)
 
 # Link libraries
 target_link_libraries(Gambler0.1 ${LIBS})

@@ -93,16 +93,13 @@ int main(void)
 
         va.AddBuffer(vb, layout);
 
-
         IndexBuffer ib(indecies, 6);
 
-
         //projection matrix converts from world coordinates to screen coordinates, in this case from pixel space to NDC space
-        glm::mat4 proj = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f, -1.0f, 1.0f);
+        glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f);
         
         //view matrix converts from world coordinates to camera coordinates. note: translating the "camera" is actually translating the world in the OPPOSITE direction
         glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(100, 0, 0));
-
 
         glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 200, 0));
 
