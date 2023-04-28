@@ -1,17 +1,20 @@
 #define GLEW_STATIC
 
+//OpenGL includes
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <GLFW/glfw3.h>
 
-
+//Standard includes
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
+//Custom includes
 #include "GLMacros.h"
 
+//Renderer Classes (probably not going to stay here)
 #include "VertexBuffer.cpp"
 #include "IndexBuffer.cpp"
 #include "VertexArray.cpp"
@@ -19,8 +22,15 @@
 #include "Renderer.cpp"
 #include "Texture.cpp"
 
+//Math includes
 #include "vendor/glm/glm.hpp"
 #include "vendor/glm/gtc/matrix_transform.hpp"
+
+//imgui includes
+#define IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+#include "ImGUI/imgui.h"
+#include "ImGUI/imgui_impl_glfw.h"
+#include "ImGUI/imgui_impl_opengl3.h"
 
 int main(void)
 {
@@ -36,7 +46,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(1920, 1080, "Gambler0.2", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -123,46 +133,82 @@ int main(void)
 
         Renderer renderer;
 
-        float colors[] = {0, 1.0f, 0};
-        unsigned int channel = 0;
-        unsigned int channel2 = 1;
-        float increment = 0.005f;
+
+        //imgui setup
+        //IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
+        ImGui_ImplOpenGL3_Init();
+        ImGui::StyleColorsDark();
+
+
+        bool show_demo_window = true;
+        bool show_another_window = false;
+        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
 
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
 
-            //get input
+            
             /* Poll for and process events */
             glfwPollEvents();
             
             //tick or update
-            
-            // if(colors[channel] >= 1.0f){
-            //     channel2 = channel;
-            //     channel = (channel + 1) % 3;
-            // }
-            // colors[channel] += increment;
-            // colors[channel2] -= increment;
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
 
             
-
 
             /* Render here */
             renderer.Clear();
             shader.Bind();
-            shader.SetUniform4f("u_Color", colors[0], colors[1], colors[2], 1.0f);
             
             //this is the draw call. 
             //the vertex array object is bound, the index buffer object is bound, and the shader program is bound
             renderer.Draw(va, ib, shader);
 
+            static float f = 0.0f;
+		    static int counter = 0;
+
+		    if (show_demo_window)
+			    ImGui::ShowDemoWindow(&show_demo_window);
+
+            {
+                static float f = 0.0f;
+                static int counter = 0;
+
+                ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+
+                ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+                ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+                ImGui::Checkbox("Another Window", &show_another_window);
+
+                ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+                ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+
+                if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when                       edited/activated)
+                    counter++;
+                ImGui::SameLine();
+                ImGui::Text("counter = %d", counter);
+
+                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+                ImGui::End();
+		    }
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
 
         }
+        //last , after game loop
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
     }
     glfwTerminate();
     return 0;

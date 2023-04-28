@@ -69,7 +69,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -99,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -176,10 +176,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\dev\Gambler0.1\build\Gambler0.1.vcxproj">
       <Project>{CD2C6E10-8F0C-30CD-93CB-6F09287A7A85}</Project>
       <Name>Gambler0.1</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\dev\Gambler0.1\build\IMGUIEXAMPLE.vcxproj">
-      <Project>{6234EFB8-3535-3909-B872-50EDA1D3A088}</Project>
-      <Name>IMGUIEXAMPLE</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

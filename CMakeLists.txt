@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(Gambler0.1)
 
-#change working directory to be the same as the project directory so relative paths work
+# Change working directory to be the same as the project directory so relative paths work
 set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 
 # Set the path to the Dependencies directory
@@ -22,13 +22,17 @@ set(GLEW_DIR "${DEPENDENCIES_DIR}/GLEW")
 include_directories(${GLEW_DIR}/include)
 set(LIBS ${LIBS} ${GLEW_DIR}/lib/Release/Win32/glew32s.lib)
 
+# Add imgui source files
+include_directories(${CMAKE_SOURCE_DIR}/src/vendor)
+file(GLOB IMGUI_SOURCES ${CMAKE_SOURCE_DIR}/src/vendor/imgui/*.cpp)
+file(GLOB IMGUI_HEADERS ${CMAKE_SOURCE_DIR}/src/vendor/imgui/*.h)
+
 # Add your project source files
-add_executable(Gambler0.1 src/main.cpp)
-add_executable(IMGUIEXAMPLE src/vendor/imgui/main.cpp)
+add_executable(Gambler0.1 src/main.cpp ${IMGUI_SOURCES})
 
 # Link libraries
 target_link_libraries(Gambler0.1 ${LIBS})
 
-# Set the C++ standard to latest release
+# Set the C++ standard to the latest release
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
