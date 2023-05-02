@@ -1,5 +1,8 @@
 #define GLEW_STATIC
 
+//DEFINE EDITOR MODE HERE!
+
+
 //OpenGL includes
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -111,14 +114,11 @@ int main(void)
         //view matrix converts from world coordinates to camera coordinates. note: translating the "camera" is actually translating the world in the OPPOSITE direction
         glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(100, 0, 0));
 
-        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 200, 0));
-
-        glm::mat4 mvp = proj * view * model;
+        
 
 
         Shader shader = Shader("res/shaders/basic.shader");
         shader.Bind();
-        shader.SetUniformMat4f("u_MVP", mvp);
         
         //shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
 
@@ -148,6 +148,8 @@ int main(void)
         ImGui_ImplOpenGL3_Init();
         ImGui::StyleColorsDark();
 
+        glm::vec3 translation(200,200,0);
+
 
         bool show_demo_window = true;
         bool show_another_window = false;
@@ -172,6 +174,13 @@ int main(void)
 
             /* Render here */
             renderer.Clear();
+
+            glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
+
+            glm::mat4 mvp = proj * view * model;
+            shader.SetUniformMat4f("u_MVP", mvp);
+
+
             shader.Bind();
             
             //this is the draw call. 
@@ -179,43 +188,43 @@ int main(void)
             renderer.Draw(va, ib, shader);
 
             static float f = 0.0f;
-		    static int counter = 0;
-
-		    if (show_demo_window)
-            ImGui::ShowDemoWindow(&show_demo_window);
-
-        // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-        {
-            static float f = 0.0f;
             static int counter = 0;
 
-            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+            if (show_demo_window)
+                ImGui::ShowDemoWindow(&show_demo_window);
 
-            ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-            ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-            ImGui::Checkbox("Another Window", &show_another_window);
+        // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
+            {
+                static float f = 0.0f;
+                static int counter = 0;
 
-            ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+                ImGui::Begin("Gambler Level Editor");                          // Create a window called "Hello, world!" and append into it.
 
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-                counter++;
-            ImGui::SameLine();
-            ImGui::Text("counter = %d", counter);
+                ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+                ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+                ImGui::Checkbox("Another Window", &show_another_window);
 
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-            ImGui::End();
-        }
+                ImGui::SliderFloat3("Translation", &translation.x, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+                ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+
+                if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+                    counter++;
+                ImGui::SameLine();
+                ImGui::Text("counter = %d", counter);
+
+                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+                ImGui::End();
+            }
 
         // 3. Show another simple window.
         if (show_another_window)
-        {
-            ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-            ImGui::Text("Hello from another window!");
-            if (ImGui::Button("Close Me"))
-                show_another_window = false;
-            ImGui::End();
-        }
+            {
+                ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+                ImGui::Text("Hello from another window!");
+                if (ImGui::Button("Close Me"))
+                    show_another_window = false;
+                ImGui::End();
+            }
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
