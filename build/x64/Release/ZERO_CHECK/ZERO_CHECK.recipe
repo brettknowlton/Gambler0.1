@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\dev\Gambler0.1\build\CMakeFiles\3.25.1-msvc1\Debug\VCTargetsPath</FullPath>
+      <FullPath>C:\dev\Gambler0.1\build\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

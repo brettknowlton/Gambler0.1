@@ -51,7 +51,10 @@
         "ctime": "cpp",
         "ratio": "cpp",
         "iomanip": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "cstring": "cpp",
+        "xlocinfo": "cpp",
+        "xstring": "cpp"
     },
     
     "cmake.buildDirectory": "${workspaceFolder}/build",

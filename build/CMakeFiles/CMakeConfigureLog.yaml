@@ -18,13 +18,13 @@ events:
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler:  
-      Build flags: /DWIN32;/D_WINDOWS;/W3
+      Build flags: 
       Id flags:  
       
       The output was:
       0
       MSBuild version 17.5.1+f6fdcf537 for .NET Framework
-      Build started 5/5/2023 11:47:02 AM.
+      Build started 5/5/2023 5:56:00 PM.
       Included response file: C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
       
       Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\3.26.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
@@ -34,15 +34,15 @@ events:
       InitializeBuildStatus:
         Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /analyze- /FC /errorReport:queue CMakeCCompilerId.c
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /analyze- /FC /errorReport:queue CMakeCCompilerId.c
         CMakeCCompilerId.c
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCCompilerId.obj
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCCompilerId.obj
         CompilerIdC.vcxproj -> C:\\dev\\Gambler0.1\\build\\CMakeFiles\\3.26.3\\CompilerIdC\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\Hostx86\\x86\\cl.exe
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\Hostx64\\x86\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
@@ -52,7 +52,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.56
+      Time Elapsed 00:00:01.08
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -72,13 +72,13 @@ events:
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler:  
-      Build flags: /DWIN32;/D_WINDOWS;/W3;/GR;/EHsc
+      Build flags: 
       Id flags:  
       
       The output was:
       0
       MSBuild version 17.5.1+f6fdcf537 for .NET Framework
-      Build started 5/5/2023 11:47:04 AM.
+      Build started 5/5/2023 5:56:01 PM.
       Included response file: C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
       
       Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\3.26.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
@@ -88,15 +88,15 @@ events:
       InitializeBuildStatus:
         Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
         CMakeCXXCompilerId.cpp
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
         CompilerIdCXX.vcxproj -> C:\\dev\\Gambler0.1\\build\\CMakeFiles\\3.26.3\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\Hostx86\\x86\\cl.exe
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\Hostx64\\x86\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
@@ -106,7 +106,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.12
+      Time Elapsed 00:00:00.77
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -125,8 +125,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-w247y3"
-      binary: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-w247y3"
+      source: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-ubv8qy"
+      binary: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-ubv8qy"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
@@ -134,38 +134,38 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-w247y3
+        Change Dir: C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-ubv8qy
         
-        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_201eb.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.1+f6fdcf537 for .NET Framework
-        Build started 5/5/2023 11:47:06 AM.
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_2cca1.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.1+f6fdcf537 for .NET Framework
+        Build started 5/5/2023 5:56:02 PM.
         Included response file: C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
         
-        Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w247y3\\cmTC_201eb.vcxproj" on node 1 (default targets).
+        Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ubv8qy\\cmTC_2cca1.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_201eb.dir\\Debug\\".
-          Creating directory "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w247y3\\Debug\\".
-          Creating directory "cmTC_201eb.dir\\Debug\\cmTC_201eb.tlog\\".
+          Creating directory "cmTC_2cca1.dir\\Debug\\".
+          Creating directory "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ubv8qy\\Debug\\".
+          Creating directory "cmTC_2cca1.dir\\Debug\\cmTC_2cca1.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_201eb.dir\\Debug\\cmTC_201eb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_2cca1.dir\\Debug\\cmTC_2cca1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_201eb.dir\\Debug\\\\" /Fd"cmTC_201eb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2cca1.dir\\Debug\\\\" /Fd"cmTC_2cca1.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.35.32217.1 for x86
           CMakeCCompilerABI.c
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_201eb.dir\\Debug\\\\" /Fd"cmTC_201eb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2cca1.dir\\Debug\\\\" /Fd"cmTC_2cca1.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w247y3\\Debug\\cmTC_201eb.exe" /INCREMENTAL /ILK:"cmTC_201eb.dir\\Debug\\cmTC_201eb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-w247y3/Debug/cmTC_201eb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-w247y3/Debug/cmTC_201eb.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_201eb.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_201eb.vcxproj -> C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w247y3\\Debug\\cmTC_201eb.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ubv8qy\\Debug\\cmTC_2cca1.exe" /INCREMENTAL /ILK:"cmTC_2cca1.dir\\Debug\\cmTC_2cca1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-ubv8qy/Debug/cmTC_2cca1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-ubv8qy/Debug/cmTC_2cca1.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_2cca1.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_2cca1.vcxproj -> C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ubv8qy\\Debug\\cmTC_2cca1.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_201eb.dir\\Debug\\cmTC_201eb.tlog\\unsuccessfulbuild".
-          Touching "cmTC_201eb.dir\\Debug\\cmTC_201eb.tlog\\cmTC_201eb.lastbuildstate".
-        Done Building Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w247y3\\cmTC_201eb.vcxproj" (default targets).
+          Deleting file "cmTC_2cca1.dir\\Debug\\cmTC_2cca1.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2cca1.dir\\Debug\\cmTC_2cca1.tlog\\cmTC_2cca1.lastbuildstate".
+        Done Building Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ubv8qy\\cmTC_2cca1.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.27
+        Time Elapsed 00:00:00.72
         
       exitCode: 0
   -
@@ -177,8 +177,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-oq4v9i"
-      binary: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-oq4v9i"
+      source: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-txlfcx"
+      binary: "C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-txlfcx"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
@@ -186,38 +186,38 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-oq4v9i
+        Change Dir: C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-txlfcx
         
-        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_aa7ec.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.1+f6fdcf537 for .NET Framework
-        Build started 5/5/2023 11:47:08 AM.
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_7431c.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.1+f6fdcf537 for .NET Framework
+        Build started 5/5/2023 5:56:03 PM.
         Included response file: C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
         
-        Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oq4v9i\\cmTC_aa7ec.vcxproj" on node 1 (default targets).
+        Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txlfcx\\cmTC_7431c.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_aa7ec.dir\\Debug\\".
-          Creating directory "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oq4v9i\\Debug\\".
-          Creating directory "cmTC_aa7ec.dir\\Debug\\cmTC_aa7ec.tlog\\".
+          Creating directory "cmTC_7431c.dir\\Debug\\".
+          Creating directory "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txlfcx\\Debug\\".
+          Creating directory "cmTC_7431c.dir\\Debug\\cmTC_7431c.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_aa7ec.dir\\Debug\\cmTC_aa7ec.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_7431c.dir\\Debug\\cmTC_7431c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aa7ec.dir\\Debug\\\\" /Fd"cmTC_aa7ec.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7431c.dir\\Debug\\\\" /Fd"cmTC_7431c.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.35.32217.1 for x86
           CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aa7ec.dir\\Debug\\\\" /Fd"cmTC_aa7ec.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7431c.dir\\Debug\\\\" /Fd"cmTC_7431c.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oq4v9i\\Debug\\cmTC_aa7ec.exe" /INCREMENTAL /ILK:"cmTC_aa7ec.dir\\Debug\\cmTC_aa7ec.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-oq4v9i/Debug/cmTC_aa7ec.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-oq4v9i/Debug/cmTC_aa7ec.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_aa7ec.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_aa7ec.vcxproj -> C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oq4v9i\\Debug\\cmTC_aa7ec.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txlfcx\\Debug\\cmTC_7431c.exe" /INCREMENTAL /ILK:"cmTC_7431c.dir\\Debug\\cmTC_7431c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-txlfcx/Debug/cmTC_7431c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/dev/Gambler0.1/build/CMakeFiles/CMakeScratch/TryCompile-txlfcx/Debug/cmTC_7431c.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_7431c.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_7431c.vcxproj -> C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txlfcx\\Debug\\cmTC_7431c.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_aa7ec.dir\\Debug\\cmTC_aa7ec.tlog\\unsuccessfulbuild".
-          Touching "cmTC_aa7ec.dir\\Debug\\cmTC_aa7ec.tlog\\cmTC_aa7ec.lastbuildstate".
-        Done Building Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oq4v9i\\cmTC_aa7ec.vcxproj" (default targets).
+          Deleting file "cmTC_7431c.dir\\Debug\\cmTC_7431c.tlog\\unsuccessfulbuild".
+          Touching "cmTC_7431c.dir\\Debug\\cmTC_7431c.tlog\\cmTC_7431c.lastbuildstate".
+        Done Building Project "C:\\dev\\Gambler0.1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-txlfcx\\cmTC_7431c.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.98
+        Time Elapsed 00:00:00.72
         
       exitCode: 0
 ...
