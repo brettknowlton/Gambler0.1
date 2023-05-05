@@ -22,6 +22,9 @@ set(GLEW_DIR "${DEPENDENCIES_DIR}/GLEW")
 include_directories(${GLEW_DIR}/include)
 set(LIBS ${LIBS} ${GLEW_DIR}/lib/Release/Win32/glew32s.lib)
 
+# Add misc libraries
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 # Add imgui source files
 include_directories(${CMAKE_SOURCE_DIR}/src/vendor)
 file(GLOB IMGUI_SOURCES ${CMAKE_SOURCE_DIR}/src/vendor/imgui/*.cpp)

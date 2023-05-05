@@ -36,6 +36,12 @@
 #include "ImGUI/imgui_impl_opengl3.h"
 
 
+//tests
+#include "tests/Test.cpp"
+#include "tests/TestClearColor.cpp"
+#include "tests/TestTexture2D.cpp"
+#include "tests/TestBatchedRendering.cpp"
+
 int main(void)
 {
 //////////////////////////////////////////////////////////////
@@ -76,63 +82,11 @@ int main(void)
 /////////////////////////////////////////////////////////////////////
 
     {//TODO: figure out how to get rid of this gross scoping issue...
-        float positions[] = {
-            -50.0f, -50.0f, 0.0f, 0.0f,
-            50.0f, -50.0f, 1.0f, 0.0f,
-            50.0f, 50.0f, 1.0f, 1.0f,
-            -50.0f, 50.0f, 0.0f, 1.0f,
-        };
-
-        unsigned int indecies[]{
-            0,1,2,
-            2,3,0,
-        };
-
+        //enable blending
         GLCall(glEnable(GL_BLEND));
         GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
-        //extra spacing added for readability, this is important to understand.
-        
-        //index buffers and vertex buffers are stored in the GPU's memory, so we need to tell the GPU what the data is and where it is
-        //we do this by creating a vertex-array object, which will store the data and tell the GPU what it is and where it is
-        //vertex buffers specifically are used to store the data 
-        //index buffers specifically are used to tell the GPU what order to draw the data in
-        //There is a 3rd object called a vertex array object.
-        //vertex arrays have the ability to store both vertex buffers and index buffers, and tell the GPU what the data is and where it is
-
-        VertexArray va; 
-
-        VertexBuffer vb(positions, 4 * 4 * sizeof(float));
-
-        VertexBufferLayout layout;
-        layout.Push<float>(2);
-        layout.Push<float>(2);
-
-        va.AddBuffer(vb, layout);
-
-        IndexBuffer ib(indecies, 6);
-
-        //projection matrix converts from world coordinates to screen coordinates, in this case from pixel space to NDC space
-        glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f);
-        
-        //view matrix converts from world coordinates to camera coordinates. note: translating the "camera" is actually translating the world in the OPPOSITE direction
-        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-        Shader shader = Shader("../../res/shaders/basic.shader");
-        shader.Bind();
-        
-        //shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
-
-        Texture texture("../../res/textures/test.png");
-        texture.Bind();
-        shader.SetUniform1i("u_Texture", 0);
-    
-        va.Unbind();
-        vb.Unbind();
-        ib.Unbind();
-        shader.Unbind();
-
         Renderer renderer;
-
 
         //imgui setup
         //IMGUI_CHECKVERSION();
@@ -143,69 +97,51 @@ int main(void)
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
         io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
 
-
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init();
         ImGui::StyleColorsDark();
 
-        glm::vec3 translation(200,200,0);
+        test::Test* currentTest = nullptr;
+        test::TestMenu* testMenu = new test::TestMenu(currentTest);
+        currentTest = testMenu;
 
-
-        bool show_demo_window = true;
-        bool show_another_window = false;
-        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-
+        testMenu->RegisterTest<test::TestClearColor>("Clear Color");
+        testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
+        testMenu->RegisterTest<test::TestBatchedRendering>("Batched Rendering");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
-
             
             /* Poll for and process events */
             glfwPollEvents();
             
             //tick or update
+
+
+            // Render
+            GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
+            renderer.Clear();
+
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
-
             
-
-            /* Render here */
-            renderer.Clear();
-
-            glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
-
-            glm::mat4 mvp = proj * view * model;
-
-
-            shader.Bind();
-            
-            shader.SetUniformMat4f("u_MVP", mvp);
-            
-            //this is the draw call. 
-            //the vertex array object is bound, the index buffer object is bound, and the shader program is bound
-            renderer.Draw(va, ib, shader);
-
-            static float f = 0.0f;
-            static int counter = 0;
-
-            if (show_demo_window)
-                ImGui::ShowDemoWindow(&show_demo_window);
-
-        // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
+            if (currentTest)
             {
-                static float f = 0.0f;
-                static int counter = 0;
-
-                ImGui::Begin("Gambler Level Editor");                          // Create a window called "Hello, world!" and append into it.
-
-                ImGui::Text("This is some useful text.");
-
-                ImGui::SliderFloat2("Translation", &translation.x, 0.0f, 960.0f);
+                currentTest->OnUpdate(0.0f);
+                currentTest->OnRender();
+                ImGui::Begin("Test");
+                if (currentTest != testMenu && ImGui::Button("<-"))
+                {
+                    delete currentTest;
+                    currentTest = testMenu;
+                }
+                currentTest->OnImGuiRender();
                 ImGui::End();
             }
+
+
 
 
             // Rendering
@@ -224,6 +160,10 @@ int main(void)
             glfwSwapBuffers(window);
 
         }
+
+        delete currentTest;
+        if(currentTest != testMenu)
+            delete testMenu;
         //last , after game loop
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();

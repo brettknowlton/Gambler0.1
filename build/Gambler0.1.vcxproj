@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -103,10 +103,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -146,10 +146,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -172,7 +172,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -189,10 +189,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -215,7 +215,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -231,10 +231,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Gambler0.1\Dependencies\GLFW\include;C:\dev\Gambler0.1\Dependencies\GLUT\include;C:\dev\Gambler0.1\Dependencies\GLEW\include;C:\dev\Gambler0.1\src;C:\dev\Gambler0.1\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
