@@ -46,7 +46,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(960, 540, "Gambler0.2", NULL, NULL);
+    window = glfwCreateWindow(1920, 1080, "Gambler0.2", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
