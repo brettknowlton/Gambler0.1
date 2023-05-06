@@ -42,6 +42,9 @@
 #include "tests/TestTexture2D.cpp"
 #include "tests/TestBatchedRendering.cpp"
 
+//world
+#include "World.cpp"
+
 int main(void)
 {
 //////////////////////////////////////////////////////////////
@@ -109,6 +112,8 @@ int main(void)
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         testMenu->RegisterTest<test::TestBatchedRendering>("Batched Rendering");
 
+        game::World world;
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
@@ -117,6 +122,7 @@ int main(void)
             glfwPollEvents();
             
             //tick or update
+            world.tick();
 
 
             // Render
