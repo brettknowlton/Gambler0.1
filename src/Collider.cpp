@@ -7,6 +7,9 @@ Collider::Collider(int x, int y, int width, int height)
     : x(x), y(y), width(width), height(height) {
 }
 
+Collider::~Collider() {
+}
+
 void Collider::Render(Renderer& renderer) {
     // Render the collider here, e.g., by drawing a rectangle
 }
