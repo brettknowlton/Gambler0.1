@@ -20,8 +20,8 @@ namespace game{
     void Zone::Tick(float dt)
     {
         //we may not need to tick all of these, but we'll see
-        // for (auto& tile : tiles)
-        //     tile->Tick(dt);
+        for (auto& tile : m_Tiles)
+            tile->Tick(dt);
         for (auto& collider : m_Colliders)
             collider->Tick(dt);
         // for (auto& enemy : enemies)
@@ -34,7 +34,7 @@ namespace game{
             tile->Render(renderer);
 
         #ifdef GAMBLER_DEBUG
-        for (auto& collider : colliders)//very optional to render colliders, probably only in debug mode
+        for (auto& collider : m_Colliders)//very optional to render colliders, probably only in debug mode
             collider->Render(renderer);
         #endif
 

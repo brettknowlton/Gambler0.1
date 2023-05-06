@@ -2,6 +2,8 @@
 
 #include <vector>
 #include "Tile.h"
+#include "renderer/Renderer.h"
+#include "renderer/Texture.h"
 
 namespace game {
 
@@ -11,7 +13,7 @@ public:
     ~Collider();
 
     virtual void Tick(float dt);
-    void Render(Renderer& renderer);
+    void Render(const Renderer& renderer);
 
     int GetX() { return x; }
     int GetY() { return y; }
@@ -20,6 +22,9 @@ public:
 
 private:
     int x, y, width, height;
-    //std::vector<std::shared_ptr<Tile>> tiles;
+
+    std::unique_ptr<VertexArray> m_VAO;
+    std::unique_ptr<VertexBuffer> m_VBO;
+    std::unique_ptr<IndexBuffer> m_IBO;
 };
 }//namespace game

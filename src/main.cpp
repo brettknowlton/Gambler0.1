@@ -1,7 +1,7 @@
 #define GLEW_STATIC
 
 //DEFINE EDITOR MODE HERE!
-
+#define GAMBLER_DEBUG
 
 //OpenGL includes
 #include <GL/glew.h>
@@ -127,7 +127,7 @@ int main(void)
             glfwPollEvents();
             
             //tick or update
-
+            world.Tick(0.0f);
 
             // Render
             GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
@@ -150,6 +150,8 @@ int main(void)
                 currentTest->OnImGuiRender();
                 ImGui::End();
             }
+
+            world.Render(renderer);
 
 
 

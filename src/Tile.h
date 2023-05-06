@@ -19,6 +19,7 @@ public:
     ~Tile();
 
     void Render(const Renderer& renderer) const;
+    void Tick(float dt);
 
     int GetX() const { return m_X; }
     int GetY() const { return m_Y; }

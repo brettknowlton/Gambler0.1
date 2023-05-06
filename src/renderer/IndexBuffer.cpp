@@ -1,7 +1,7 @@
 #include "IndexBuffer.h"
 #include "GLMacros.h"
 
-IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count)
+IndexBuffer::IndexBuffer(const void* data, unsigned int count)
 : m_Count(count)
 {
     GLCall(glGenBuffers(1, &m_RendererID));
@@ -21,4 +21,17 @@ void IndexBuffer::Bind() const
 void IndexBuffer::Unbind() const
 {
     GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+}
+
+void* IndexBuffer::MapBuffer()
+{
+    Bind();
+    GLCall(m_MappedBuffer = glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY));
+    return m_MappedBuffer;
+}
+
+void IndexBuffer::UnmapBuffer()
+{
+    GLCall(glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER));
+    Unbind();
 }

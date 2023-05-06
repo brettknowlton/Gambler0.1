@@ -1,5 +1,6 @@
 #include "VertexBuffer.h"
 #include "GLMacros.cpp"
+#include <GL/glew.h>
 
 VertexBuffer::VertexBuffer(const void* data, unsigned int size)
 {
@@ -20,4 +21,17 @@ void VertexBuffer::Bind() const
 void VertexBuffer::Unbind() const
 {//Unbinds all buffers
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+}
+
+void* VertexBuffer::MapBuffer()
+{
+    Bind();
+    GLCall(m_MappedBuffer = glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY));
+    return m_MappedBuffer;
+}
+
+void VertexBuffer::UnmapBuffer()
+{
+    GLCall(glUnmapBuffer(GL_ARRAY_BUFFER));
+    Unbind();
 }

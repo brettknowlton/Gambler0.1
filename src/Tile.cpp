@@ -36,4 +36,7 @@ namespace game{
         m_TextureAtlas->Bind();
         renderer.Draw(*m_VAO, *m_IBO, *new Shader("../../res/shaders/Basic.shader"));
     }
+
+    void Tile::Tick(float dt){
+    }
 }
