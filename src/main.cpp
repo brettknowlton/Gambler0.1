@@ -42,8 +42,11 @@
 #include "tests/TestTexture2D.cpp"
 #include "tests/TestBatchedRendering.cpp"
 
-//world
 #include "World.cpp"
+#include "Zone.cpp"
+#include "Collider.cpp"
+#include "Tile.cpp"
+
 
 int main(void)
 {
@@ -112,7 +115,9 @@ int main(void)
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         testMenu->RegisterTest<test::TestBatchedRendering>("Batched Rendering");
 
-        game::World world;
+
+        game::World world(10,10);
+
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -122,7 +127,6 @@ int main(void)
             glfwPollEvents();
             
             //tick or update
-            world.tick();
 
 
             // Render
@@ -161,6 +165,7 @@ int main(void)
                 ImGui::RenderPlatformWindowsDefault();
                 glfwMakeContextCurrent(backup_current_context);
             }
+
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);

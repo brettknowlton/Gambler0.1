@@ -1,6 +1,6 @@
 ^C:\DEV\GAMBLER0.1\BUILD\CMAKEFILES\D71C633AB6ADB42B950748D1DF6F53D8\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/dev/Gambler0.1 -BC:/dev/Gambler0.1/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/dev/Gambler0.1/build/Gambler0.1.sln
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/dev/Gambler0.1 -BC:/dev/Gambler0.1/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/dev/Gambler0.1/build/Gambler0.1.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

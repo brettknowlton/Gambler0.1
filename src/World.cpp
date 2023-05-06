@@ -5,67 +5,65 @@ namespace game{
 World::World(int zoneWidth, int zoneHeight)
 : zoneWidth(zoneWidth), zoneHeight(zoneHeight)
 {
-    zones.resize(zoneWidth, std::vector<std::shared_ptr<Zone>>(zoneHeight, nullptr));
-
+    zones.resize(zoneWidth * zoneHeight);
 }
 
 World::~World() {
 }
 
-void World::Tick() {
-    for (auto& row : zones) {
-        for (auto& zone : row) {
-            if (zone != nullptr) {
-                zone->Tick();
-            }
+void World::Tick(float dt) {
+    for (auto& zone : zones) {
+        if (zone != nullptr) {
+            zone->Tick(dt);
         }
     }
 }
 
-void World::Render() {
-    for (auto& row : zones) {
-        for (auto& zone : row) {
-            if (zone != nullptr) {
-                zone->Render();
-            }
+void World::Render(const Renderer& renderer) {
+    for (auto& zone : zones) {
+        if (zone != nullptr) {
+            zone->Render(renderer);
+            RenderAdjacentZones(zone, renderer);
         }
     }
 }
 
-void World::LoadZone(int x, int y) {
-    if (IsZoneLoaded(x, y)) {
-        return;
-    }
-
-    zones[x][y] = std::make_shared<Zone>(x, y);
-    LoadAdjacentZones(x, y);
+void World::addZone(std::shared_ptr<Zone> zone) {
+    zones[zone->GetX() + zone->GetY() * zoneWidth] = zone;
 }
 
-void World::UnloadZone(int x, int y) {
-    if (!IsZoneLoaded(x, y)) {
-        return;
-    }
-
-    zones[x][y] = nullptr;
+void World::removeZone(std::shared_ptr<Zone> zone) {
+    zones[zone->GetX() + zone->GetY() * zoneWidth] = nullptr;
 }
 
-bool World::IsZoneLoaded(int x, int y) {
-    return zones[x][y] != nullptr;
+bool World::IsZoneLoaded(std::shared_ptr<Zone> zone) {
+    return zone != nullptr;
 }
 
-void World::LoadAdjacentZones(int x, int y) {
-    if (x > 0) {
-        LoadZone(x - 1, y);
+void World::RenderAdjacentZones(std::shared_ptr<Zone> zone, const Renderer& renderer) {
+
+    //loop 9 times, once for each adjacent zone plus the center one
+    for(int i=0; i<9; i++) {
+
+        //if i is 4, then we are on the center zone, so skip it
+        if(i == 4) {
+            continue;
+        }
+
+        //calculate the x and y offsets for the adjacent zone
+        int xOffset = (i % 3) - 1;
+        int yOffset = (i / 3) - 1;
+
+        //calculate the x and y coordinates of the adjacent zone
+        int x = zone->GetX() + xOffset;
+        int y = zone->GetY() + yOffset;
+
+        //if the adjacent zone is loaded, render it
+        if(IsZoneLoaded(zones[x + y * zoneWidth])) {
+            zones[x + y * zoneWidth]->Render(renderer);
+        }
     }
-    if (x < zoneWidth - 1) {
-        LoadZone(x + 1, y);
-    }
-    if (y > 0) {
-        LoadZone(x, y - 1);
-    }
-    if (y < zoneHeight - 1) {
-        LoadZone(x, y + 1);
-    }
+
 }
 
 } // namespace game

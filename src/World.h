@@ -7,20 +7,22 @@
 namespace game{
     
 class World
+{
 public:
-    World();
+    World(int zoneWidth, int zoneHeight);
     ~World();
     
     void addZone(std::shared_ptr<Zone> zone);
     void removeZone(std::shared_ptr<Zone> zone);
     
-    void update();
+    void Tick(float dt);
+    void Render(const Renderer& renderer);
 
 private:
     std::vector<std::shared_ptr<Zone>> zones;
     int zoneWidth, zoneHeight;
 
-    bool IsZoneLoaded(int x, int y);
-    void LoadAdjacentZones(int x, int y);
+    bool IsZoneLoaded(std::shared_ptr<Zone> zone);
+    void RenderAdjacentZones(std::shared_ptr<Zone> zone, const Renderer& renderer);
 };
 }

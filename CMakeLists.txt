@@ -30,7 +30,11 @@ include_directories(${CMAKE_SOURCE_DIR}/src/vendor)
 file(GLOB IMGUI_SOURCES ${CMAKE_SOURCE_DIR}/src/vendor/imgui/*.cpp)
 file(GLOB IMGUI_HEADERS ${CMAKE_SOURCE_DIR}/src/vendor/imgui/*.h)
 
-# Add your project source files
+include_directories(${CMAKE_SOURCE_DIR}/src/renderer)
+file(GLOB RENDERER_SOURCES ${CMAKE_SOURCE_DIR}/src/renderer/*.cpp)
+file(GLOB RENDERER_HEADERS ${CMAKE_SOURCE_DIR}/src/renderer/*.h)
+
+# Add your project
 add_executable(Gambler0.1 src/main.cpp ${IMGUI_SOURCES})
 
 # Link libraries
