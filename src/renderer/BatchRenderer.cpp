@@ -62,7 +62,7 @@ void BatchRenderer::End()
 
 void BatchRenderer::Render(const Renderer& renderer, const game::Camera& camera, const Shader& shader)
 {
-    std::cout<<"Rendering "<<m_IndicesRendered<<" indices"<<std::endl;
-    std::cout<<"Rendering "<<m_VertexBufferIndex<<" vertices"<<std::endl;
+    // std::cout<<"Rendering "<<m_IndicesRendered<<" indices"<<std::endl;
+    // std::cout<<"Rendering "<<m_VertexBufferIndex<<" vertices"<<std::endl;
     renderer.Draw(m_VAO, m_IBO, shader);
 }

@@ -91,7 +91,7 @@ namespace game{
                     unsigned int tileID = r*256*256 + g*256 + b;
                     
                     if (!(r == 255 && g == 255 && b == 255)){
-                        auto tile = std::make_shared<Tile>(x, y, 1, m_TextureAtlas, m_TileShader);
+                        auto tile = std::make_shared<Tile>(x, y, tileID, m_TextureAtlas, m_TileShader);
                         m_Tiles.push_back(tile);
                     }
                 }

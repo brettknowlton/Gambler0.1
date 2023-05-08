@@ -42,9 +42,8 @@ void World::Render(const Renderer& renderer, const Camera& camera) {
             zone->Render(m_BatchRenderer, camera);
         }
     }
-    
-    m_BatchRenderer.Render(renderer, camera, *m_TileShader);
     m_BatchRenderer.End();
+    m_BatchRenderer.Render(renderer, camera, *m_TileShader);
 }
 
 void World::addZone(std::shared_ptr<Zone> zone) {
