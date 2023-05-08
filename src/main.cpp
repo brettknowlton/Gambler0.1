@@ -24,6 +24,7 @@
 #include "renderer/Shader.cpp"
 #include "renderer/Renderer.cpp"
 #include "renderer/Texture.cpp"
+#include "renderer/BatchRenderer.cpp"
 
 //Math includes
 #include "vendor/glm/glm.hpp"
@@ -46,6 +47,10 @@
 #include "Zone.cpp"
 #include "Collider.cpp"
 #include "Tile.cpp"
+#include "Camera.cpp"
+
+
+#include <memory>
 
 
 int main(void)
@@ -115,8 +120,10 @@ int main(void)
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         testMenu->RegisterTest<test::TestBatchedRendering>("Batched Rendering");
 
-
-        game::World world(10,10);
+        //camera
+        game::Camera camera(960,540);
+        camera.SetPosition(0,0);
+        game::World world(1, 1);
 
 
         /* Loop until the user closes the window */
@@ -130,8 +137,10 @@ int main(void)
             world.Tick(0.0f);
 
             // Render
-            GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
+            GLCall(glClearColor(0.7f, 0.5f, 0.0f, 1.0f));
             renderer.Clear();
+
+            world.Render(renderer, camera);
 
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
@@ -150,10 +159,6 @@ int main(void)
                 currentTest->OnImGuiRender();
                 ImGui::End();
             }
-
-            world.Render(renderer);
-
-
 
 
             // Rendering

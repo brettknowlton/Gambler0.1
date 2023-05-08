@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 
 VertexBuffer::VertexBuffer(const void* data, unsigned int size)
+:m_Data(data), m_Count(size)
 {
     GLCall(glGenBuffers(1, &m_RendererID));//create ONE buffer and store the ID in m_RendererID
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_RendererID));//make this the currently active buffer
@@ -23,15 +24,19 @@ void VertexBuffer::Unbind() const
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 }
 
-void* VertexBuffer::MapBuffer()
+void VertexBuffer::MapBuffer()
 {
     Bind();
     GLCall(m_MappedBuffer = glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY));
-    return m_MappedBuffer;
 }
 
 void VertexBuffer::UnmapBuffer()
 {
     GLCall(glUnmapBuffer(GL_ARRAY_BUFFER));
     Unbind();
+}
+
+const float* VertexBuffer::GetData() const
+{
+    return (const float*)m_MappedBuffer;
 }

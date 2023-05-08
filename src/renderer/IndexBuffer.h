@@ -14,6 +14,8 @@ public:
 
     inline unsigned int GetCount() const { return m_Count; }
 
-    void* MapBuffer();
+    void MapBuffer();
     void UnmapBuffer();
+
+    const unsigned int* GetData() const;
 };

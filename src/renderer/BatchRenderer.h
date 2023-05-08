@@ -4,6 +4,9 @@
 #include "renderer/VertexBuffer.h"
 #include "renderer/IndexBuffer.h"
 #include "renderer/Renderer.h"
+#include "renderer/Shader.h"
+#include "Camera.h"
+
 
 class BatchRenderer
 {
@@ -13,7 +16,7 @@ public:
     void Begin();
     void Submit(const float* vertexData, size_t vertexCount, const unsigned int* indexData, size_t indexCount);
     void End();
-    void Render(const Renderer& renderer);
+    void Render(const Renderer& renderer, const game::Camera& camera, const Shader& shader);
 
 private:
     VertexArray m_VAO;

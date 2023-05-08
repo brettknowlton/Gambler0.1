@@ -4,7 +4,7 @@
 #include "GLMacros.h"
 
 
-Texture::Texture(const std::string& path)
+Texture::Texture(const std::string& path, unsigned int slot)
     : m_RendererID(0), m_FilePath(path), m_LocalBuffer(nullptr), mWidth(0), mHeight(0), m_BPP(0)
 {
 
@@ -20,10 +20,10 @@ Texture::Texture(const std::string& path)
     GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));
 
     GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWidth, mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_LocalBuffer));
-    GLCall(glBindTexture(GL_TEXTURE_2D, 0));
+    GLCall(glBindTexture(GL_TEXTURE_2D, slot));
 
     if (m_LocalBuffer) {
-        //std::cout << "Image loaded. Width: " << mWidth << ", Height: " << mHeight << ", BPP: " << m_BPP << std::endl;
+        std::cout << "Image loaded. Width: " << mWidth << ", Height: " << mHeight << ", BPP: " << m_BPP << std::endl;
         stbi_image_free(m_LocalBuffer);
     } else {
         std::cerr << "Failed to load image: " << path << std::endl;

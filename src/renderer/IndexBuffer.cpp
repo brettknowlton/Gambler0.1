@@ -23,15 +23,19 @@ void IndexBuffer::Unbind() const
     GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 }
 
-void* IndexBuffer::MapBuffer()
+void IndexBuffer::MapBuffer()
 {
     Bind();
     GLCall(m_MappedBuffer = glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY));
-    return m_MappedBuffer;
 }
 
 void IndexBuffer::UnmapBuffer()
 {
     GLCall(glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER));
     Unbind();
+}
+
+const unsigned int* IndexBuffer::GetData() const
+{
+    return (const unsigned int*)m_MappedBuffer;
 }

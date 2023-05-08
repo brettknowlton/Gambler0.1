@@ -8,7 +8,7 @@ private:
     unsigned char* m_LocalBuffer;
     int mWidth, mHeight, m_BPP;
 public:
-    Texture(const std::string& path);
+    Texture(const std::string& path, unsigned int slot=0);
     ~Texture();
 
     void Bind(unsigned int slot= 0) const;//There are typically up to 32 texture slots on modern GPUs
