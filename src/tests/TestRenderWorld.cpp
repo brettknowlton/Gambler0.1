@@ -1,9 +1,6 @@
 #include "TestRenderWorld.h"
 #include "GLMacros.h"
 #include "imgui/imgui.h"
-
-
-
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -11,7 +8,7 @@
 namespace test{
 
         TestRenderWorld::TestRenderWorld ()
-        :m_Camera(1600, 1600), m_World(1, 1), m_Translation(0,0,0)
+        :m_Camera(512, 288), m_World(1, 1), m_Translation(0,0,0)
         {
             m_Camera.SetPosition(0,0);
         

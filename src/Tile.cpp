@@ -8,10 +8,11 @@ namespace game{
     {
         //all tiles will be in the same tile atlas so we will have a standard UV coordinate step
         //use TILE_SIZE to get the correct UV coordinates
-        float u = static_cast<float>(tileID % (textureAtlas->GetWidth() / TILE_SIZE)) * TILE_SIZE;
-        m_U = u;
-        float v = static_cast<float>(tileID / (textureAtlas->GetWidth() / TILE_SIZE)) * TILE_SIZE;
-        m_V = v;
+        //tileID 0 is the bottom left tile in the atlas
+        //tileID 1 is the tile to the right of the bottom left tile in the atlas
+        m_U = static_cast<float>(tileID % (textureAtlas->GetWidth() / TILE_SIZE)) / static_cast<float>(textureAtlas->GetWidth() / TILE_SIZE);
+        m_V = static_cast<float>(tileID / (textureAtlas->GetWidth() / TILE_SIZE)) / static_cast<float>(textureAtlas->GetWidth() / TILE_SIZE);
+
 
         // std::cout<< "Tile created at: " << x << ", " << y << " with ID: " << tileID << " and UV: " << u << ", " << v << "\n";
 

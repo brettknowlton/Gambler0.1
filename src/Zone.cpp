@@ -6,13 +6,15 @@ namespace game{
     zoneID("Zone_" + std::to_string(x) + "_" + std::to_string(y))
     {
 
-        std::string colliderPath = "../../res/textures/ZoneC" + std::to_string(x) + std::to_string(y) + ".png";
-        LoadColliders(colliderPath);
+        
 
         std::string enemyPath = "../../res/textures/ZoneE" + std::to_string(x) + std::to_string(y) + ".png";
         
         std::string tilesImagePath = "../../res/textures/ZoneT" + std::to_string(x) + std::to_string(y) + ".png";
         LoadTiles(tilesImagePath);
+        
+        std::string colliderPath = "../../res/textures/ZoneC" + std::to_string(x) + std::to_string(y) + ".png";
+        LoadColliders(colliderPath);
 
     }
 

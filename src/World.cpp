@@ -8,7 +8,7 @@ m_BatchRenderer(100000, 100000)
 {
     zones.resize(zoneWidth * zoneHeight);
     //create textureAtlas
-    m_TextureAtlas = std::make_shared<Texture>("../../res/textures/Atlas.png");
+    m_TextureAtlas = std::make_shared<Texture>("../../res/textures/Atlas.png", 0);
 
     //add zones manually, not sure if this is the best way to do it
     zones[0] = std::make_shared<Zone>(0, 0, m_TileShader, m_TextureAtlas);
@@ -34,6 +34,10 @@ void World::Render(const Renderer& renderer, const Camera& camera) {
 
     m_TileShader->Bind();
     m_TileShader->SetUniformMat4f("u_ViewProjection", camera.GetViewProjectionMatrix());
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_TextureAtlas->GetID());
+
     m_TileShader->SetUniform1i("u_Texture", 0);
 
     for(const auto& zone : zones) 
