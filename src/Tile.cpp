@@ -13,7 +13,7 @@ namespace game{
         float v = static_cast<float>(tileID / (textureAtlas->GetWidth() / TILE_SIZE)) * TILE_SIZE;
         m_V = v;
 
-        std::cout<< "Tile created at: " << x << ", " << y << " with ID: " << tileID << " and UV: " << u << ", " << v << "\n";
+        // std::cout<< "Tile created at: " << x << ", " << y << " with ID: " << tileID << " and UV: " << u << ", " << v << "\n";
 
         
     }

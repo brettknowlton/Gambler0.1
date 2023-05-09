@@ -1,7 +1,12 @@
 #define GLEW_STATIC
 
 //DEFINE EDITOR MODE HERE!
+
+//DEFINE EDITOR MODE HERE!
 #define GAMBLER_DEBUG
+
+
+
 
 //OpenGL includes
 #include <GL/glew.h>
@@ -36,13 +41,14 @@
 #include "ImGUI/imgui_impl_glfw.h"
 #include "ImGUI/imgui_impl_opengl3.h"
 
-
 //tests
 #include "tests/Test.cpp"
 #include "tests/TestClearColor.cpp"
 #include "tests/TestTexture2D.cpp"
 #include "tests/TestBatchedRendering.cpp"
+#include "tests/TestRenderWorld.cpp"
 
+//game
 #include "World.cpp"
 #include "Zone.cpp"
 #include "Collider.cpp"
@@ -119,11 +125,8 @@ int main(void)
         testMenu->RegisterTest<test::TestClearColor>("Clear Color");
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         testMenu->RegisterTest<test::TestBatchedRendering>("Batched Rendering");
+        testMenu->RegisterTest<test::TestRenderWorld>("Render World");
 
-        //camera
-        game::Camera camera(960,540);
-        camera.SetPosition(0,0);
-        game::World world(1, 1);
 
 
         /* Loop until the user closes the window */
@@ -133,14 +136,10 @@ int main(void)
             /* Poll for and process events */
             glfwPollEvents();
             
-            //tick or update
-            world.Tick(0.0f);
 
             // Render
             GLCall(glClearColor(0.7f, 0.5f, 0.0f, 1.0f));
             renderer.Clear();
-
-            world.Render(renderer, camera);
 
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
@@ -149,7 +148,8 @@ int main(void)
             if (currentTest)
             {
                 currentTest->OnUpdate(0.0f);
-                currentTest->OnRender();
+
+                currentTest->OnRender(renderer);
                 ImGui::Begin("Test");
                 if (currentTest != testMenu && ImGui::Button("<-"))
                 {
@@ -187,6 +187,8 @@ int main(void)
         ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();
     }
+
+
     glfwTerminate();
     return 0;
 }

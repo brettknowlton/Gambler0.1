@@ -12,6 +12,7 @@ namespace test{
 
         virtual void OnUpdate(float deltaTime) {}
         virtual void OnRender() {}
+        virtual void OnRender(Renderer renderer) {}
         virtual void OnImGuiRender() {}
     };
 

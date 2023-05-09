@@ -52,7 +52,7 @@ namespace game{
                     
                     // If the pixel is black (r, g, and b are 0), create a collider
                     if (r == 0 && g == 0 && b == 0) {
-                        auto collider = std::make_shared<Collider>(x * Tile::TILE_SIZE, y * Tile::TILE_SIZE, Tile::TILE_SIZE, Tile::TILE_SIZE);
+                        auto collider = std::make_shared<Collider>(x, y, Tile::TILE_SIZE, Tile::TILE_SIZE);
                         m_Colliders.push_back(collider);
                     }
                 }
