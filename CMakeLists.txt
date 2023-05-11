@@ -24,7 +24,7 @@ set(LIBS ${LIBS} ${GLEW_DIR}/lib/Release/Win32/glew32s.lib)
 
 # Add misc libraries
 include_directories(${CMAKE_SOURCE_DIR}/src)
-
+include_directories(${CMAKE_SOURCE_DIR}/src/game)
 # Add imgui source files
 include_directories(${CMAKE_SOURCE_DIR}/src/vendor)
 file(GLOB IMGUI_SOURCES ${CMAKE_SOURCE_DIR}/src/vendor/imgui/*.cpp)

@@ -1,9 +1,8 @@
-#define GLEW_STATIC
-
 // Define editor mode here!
-//#define GAMBLER_DEBUG
+#define GAMBLER_DEBUG
 
 // OpenGL includes
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <GLFW/glfw3.h>
@@ -16,6 +15,7 @@
 
 // Custom includes
 #include "GLMacros.h"
+#include "KeyListener.cpp"
 
 // Renderer Classes (probably not going to stay here)
 #include "renderer/VertexBuffer.cpp"
@@ -36,18 +36,20 @@
 #include "ImGUI/imgui_impl_glfw.h"
 #include "ImGUI/imgui_impl_opengl3.h"
 
-// Tests
+// Test classes
 #include "tests/Test.cpp"
 #include "tests/TestClearColor.cpp"
 #include "tests/TestBatchedRendering.cpp"
 #include "tests/TestRenderWorld.cpp"
+#include "tests/TestPlayer.cpp"
 
-// Game
-#include "World.cpp"
-#include "Zone.cpp"
-#include "Collider.cpp"
-#include "Tile.cpp"
-#include "Camera.cpp"
+// Game classes
+#include "game/World.cpp"
+#include "game/Zone.cpp"
+#include "game/Collider.cpp"
+#include "game/Tile.cpp"
+#include "game/Camera.cpp"
+#include "game/Player.cpp"
 
 #include <memory>
 
@@ -59,6 +61,23 @@ void InitializeImGui(GLFWwindow* window);
 void ShutdownImGui();
 void RunApplicationLoop(GLFWwindow* window, test::Test*& currentTest, test::TestMenu* testMenu);
 void RenderImGui(test::Test*& currentTest, test::TestMenu* testMenu, Renderer& renderer);
+
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    /*
+    * Inputs:
+    * GLFWwindow* window: A pointer to the GLFW window that the callback is being called from.
+    * int key: The key that was pressed.
+    * int scancode: The system-specific scancode of the key.
+    * int action: The action that was performed on the key.
+    * int mods: Bit field describing which modifier keys were held down.
+    *
+    * Functionality:
+    * Handles key presses and releases.
+    *
+    * Returns: None
+    */
+    KeyListener::GetInstance().SetKeyState(key, action);
+}
 
 int main(void)
 {
@@ -84,8 +103,9 @@ int main(void)
     testMenu->RegisterTest<test::TestClearColor>("Clear Color");
     testMenu->RegisterTest<test::TestBatchedRendering>("Batched Rendering");
     testMenu->RegisterTest<test::TestRenderWorld>("Render World");
+    testMenu->RegisterTest<test::TestPlayer>("Player");
 
-
+    glfwSetKeyCallback(window, KeyCallback);
 
     RunApplicationLoop(window, currentTest, testMenu);
 
