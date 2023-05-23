@@ -4,7 +4,7 @@
 
 #include "game/Camera.h"
 #include "game/World.h"
-#include "game/Player.h"
+#include "game/ecs/Entity.h"
 
 #include "renderer/BatchRenderer.h"
 #include <memory>
@@ -27,7 +27,7 @@ namespace test{
     private:
         game::Camera m_Camera;
         game::World m_World;
-        game::Player m_Player;
+        game::Entity m_Player;
 
         Renderer renderer;
 
