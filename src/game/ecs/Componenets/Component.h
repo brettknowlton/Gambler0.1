@@ -1,12 +1,12 @@
 #pragma once
 
-namespace game {
+namespace component {
 class Component {
 public:
     virtual ~Component() = default;
 
-    virtual void update() = 0;
+    virtual void update(float dt) = 0;
 
-    virtual void render() = 0;
+    virtual void render(Renderer renderer) = 0;
 };
 }

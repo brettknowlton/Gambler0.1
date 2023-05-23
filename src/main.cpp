@@ -49,7 +49,11 @@
 #include "game/Collider.cpp"
 #include "game/Tile.cpp"
 #include "game/Camera.cpp"
-#include "game/Player.cpp"
+//#include "game/Player.cpp"
+
+// ECS classes
+#include "game/ecs/Entity.cpp"
+#include "game/ecs/Componenets/CMP_Transform.h"
 
 #include <memory>
 

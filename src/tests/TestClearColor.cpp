@@ -1,6 +1,6 @@
 #include "TestClearColor.h"
-#include "GLMacros.h"
-#include "imgui/imgui.h"
+//#include "GLMacros.h"
+//#include "imgui/imgui.h"
 
 
 namespace test{

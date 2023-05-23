@@ -3,28 +3,29 @@
 #include <memory>
 #include "game\ecs\Componenets\Component.h"
 
-
-namespace game{
-
-class Entity {
-private:
-    std::vector<std::unique_ptr<Component>> components;
-
+class Entity{
 public:
-    void addComponent(Component* component) {
-        components.push_back(std::unique_ptr<Component>(component));
+
+    Entity();
+    ~Entity();
+
+    void addComponent(std::shared_ptr<component::Component> component) {
+        components.push_back(component);
     }
 
-    void update() {
+    void update(float dt) {
         for (auto& component : components) {
-            component->update();
+            component->update(dt);
         }
     }
 
-    void render() {
+    void render(BatchRenderer renderer) {
         for (auto& component : components) {
-            component->render();
+            component->render(renderer);
         }
     }
+
+private:
+    std::vector<std::shared_ptr<component::Component>> components;
+
 };
-}

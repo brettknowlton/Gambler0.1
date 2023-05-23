@@ -2,14 +2,14 @@
 #include "Test.h"
 #include "GLMacros.h"
 
-#include "game/Camera.h"
-#include "game/World.h"
+//#include "game/Camera.h"
+//#include "game/World.h"
 #include "game/ecs/Entity.h"
 
 #include "renderer/BatchRenderer.h"
 #include <memory>
 
-#include "glm/glm.hpp"
+//#include "glm/glm.hpp"
 
 
 namespace test{
@@ -27,11 +27,8 @@ namespace test{
     private:
         game::Camera m_Camera;
         game::World m_World;
-        game::Entity m_Player;
+        Entity m_Player = Entity();
 
         Renderer renderer;
-
-        glm::vec3 m_Translation;
-
     };
 }
