@@ -10,11 +10,12 @@
 namespace test{
 
     TestPlayer::TestPlayer()
-        :m_Camera(512, 288), m_World(1, 1)
+        :m_Camera(512, 288), m_World(1, 1), m_BatchRenderer(10000, 10000)
     {
         //m_Camera.SetPosition(0,0);
-        
+        m_LoadedEntities.push_back(std::make_shared<Entity>(m_Player));
         m_Player.addComponent(std::make_shared<component::Transform>(glm::vec3(0,0,0))); 
+
     }
 
     TestPlayer::~TestPlayer()
@@ -23,13 +24,21 @@ namespace test{
 
     void TestPlayer::OnUpdate(float deltaTime)
     {
+        m_World.Tick(deltaTime);
+
+        for (auto& entity : m_LoadedEntities) {
+            entity->update(deltaTime);
+        }
         
     }
 
     void TestPlayer::OnRender(Renderer renderer)
     {
         m_World.Render(renderer, m_Camera);
-        // m_Player.Render(renderer, m_Camera);
+
+        for (auto& entity : m_LoadedEntities) {
+            entity->render(m_BatchRenderer);
+        }
     }
 
     void TestPlayer::OnImGuiRender()

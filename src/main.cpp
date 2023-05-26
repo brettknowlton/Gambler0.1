@@ -53,7 +53,8 @@
 
 // ECS classes
 #include "game/ecs/Entity.cpp"
-#include "game/ecs/Componenets/CMP_Transform.h"
+#include "game/ecs/Componenets/Component.cpp"
+#include "game/ecs/Componenets/CMP_Transform.cpp"
 
 #include <memory>
 

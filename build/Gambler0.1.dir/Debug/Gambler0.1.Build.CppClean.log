@@ -8,8 +8,6 @@ c:\dev\gambler0.1\build\gambler0.1.dir\debug\imgui_demo.obj
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\imgui.obj
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\main.obj
 c:\dev\gambler0.1\build\cmakefiles\generate.stamp
-c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.ilk
-c:\dev\gambler0.1\bin\debug\gambler0.1.exe
 c:\dev\gambler0.1\bin\debug\gambler0.1.pdb
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\cl.command.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\cl.read.1.tlog
@@ -17,6 +15,10 @@ c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\cl.write.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\custombuild.command.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\custombuild.read.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\custombuild.write.1.tlog
+c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link-cvtres.read.1.tlog
+c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link-cvtres.write.1.tlog
+c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link-rc.read.1.tlog
+c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link-rc.write.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link.command.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link.read.1.tlog
 c:\dev\gambler0.1\build\gambler0.1.dir\debug\gambler0.1.tlog\link.write.1.tlog

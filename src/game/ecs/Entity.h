@@ -4,6 +4,8 @@
 #include "game\ecs\Componenets\Component.h"
 
 class Entity{
+private:
+    std::vector<std::shared_ptr<component::Component>> components;
 public:
 
     Entity();
@@ -19,13 +21,20 @@ public:
         }
     }
 
-    void render(BatchRenderer renderer) {
+    void render(BatchRenderer& renderer) {
         for (auto& component : components) {
             component->render(renderer);
         }
     }
 
-private:
-    std::vector<std::shared_ptr<component::Component>> components;
+    template<typename T>
+    std::shared_ptr<T> getComponent() {
+        for (auto& component : components) {
+            if (std::dynamic_pointer_cast<T>(component)) {
+                return std::dynamic_pointer_cast<T>(component);
+            }
+        }
+        return nullptr;
+    }
 
 };

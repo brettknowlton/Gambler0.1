@@ -15,8 +15,10 @@ public:
 
     void Begin();
     void Submit(const float* vertexData, size_t vertexCount, const unsigned int* indexData, size_t indexCount);
+    void SubmitColoredSq(unsigned int colorID, const glm::vec2& position, const glm::vec2& size);
     void End();
     void Render(const Renderer& renderer, const game::Camera& camera, const Shader& shader);
+
 
 private:
     VertexArray m_VAO;

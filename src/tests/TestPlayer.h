@@ -1,15 +1,10 @@
 #pragma once
 #include "Test.h"
 #include "GLMacros.h"
-
-//#include "game/Camera.h"
-//#include "game/World.h"
 #include "game/ecs/Entity.h"
 
 #include "renderer/BatchRenderer.h"
 #include <memory>
-
-//#include "glm/glm.hpp"
 
 
 namespace test{
@@ -25,10 +20,14 @@ namespace test{
         void OnImGuiRender() override;
 
     private:
+        BatchRenderer m_BatchRenderer;
+
         game::Camera m_Camera;
         game::World m_World;
         Entity m_Player = Entity();
 
         Renderer renderer;
+
+        std::vector<std::shared_ptr<Entity>> m_LoadedEntities;
     };
 }
