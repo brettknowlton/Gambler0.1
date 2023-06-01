@@ -10,7 +10,7 @@
 namespace test{
 
     TestPlayer::TestPlayer()
-        :m_Camera(512, 288), m_World(1, 1), m_BatchRenderer(10000, 10000)
+        :m_Camera(512, 288), m_World(1, 1), m_BatchRenderer(10000, 10000), m_TileShader(std::make_shared<Shader>("../../res/shaders/Basic.shader"))
     {
         //m_Camera.SetPosition(0,0);
         m_LoadedEntities.push_back(std::make_shared<Entity>(m_Player));
@@ -34,11 +34,17 @@ namespace test{
 
     void TestPlayer::OnRender(Renderer renderer)
     {
+        m_BatchRenderer.Begin();
+
         m_World.Render(renderer, m_Camera);
 
         for (auto& entity : m_LoadedEntities) {
             entity->render(m_BatchRenderer);
         }
+
+        
+        m_BatchRenderer.End();
+        m_BatchRenderer.Render(renderer, m_Camera, *m_TileShader);
     }
 
     void TestPlayer::OnImGuiRender()

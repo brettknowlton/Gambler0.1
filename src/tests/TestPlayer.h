@@ -29,5 +29,6 @@ namespace test{
         Renderer renderer;
 
         std::vector<std::shared_ptr<Entity>> m_LoadedEntities;
+        std::shared_ptr<Shader> m_TileShader;
     };
 }

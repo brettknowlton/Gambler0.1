@@ -29,9 +29,8 @@ void World::Tick(float dt) {
 }
 
 void World::Render(const Renderer& renderer, const Camera& camera) {
-
-    m_BatchRenderer.Begin();
-
+    //this assumes that m_BatchRenderer.Begin() has already been called
+    //m_BatchRenderer.Begin();
     m_TileShader->Bind();
     m_TileShader->SetUniformMat4f("u_ViewProjection", camera.GetViewProjectionMatrix());
 
@@ -46,8 +45,6 @@ void World::Render(const Renderer& renderer, const Camera& camera) {
             zone->Render(m_BatchRenderer, camera);
         }
     }
-    m_BatchRenderer.End();
-    m_BatchRenderer.Render(renderer, camera, *m_TileShader);
 }
 
 void World::addZone(std::shared_ptr<Zone> zone) {
